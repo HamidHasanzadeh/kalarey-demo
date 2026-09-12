@@ -1,72 +1,186 @@
-<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"><title>اپ کالاری - نمونه کاربردی</title>
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>KalaRey — دستیار هوشمند لوازم خانگی</title>
 <style>
-:root{--p:#8f008c;--p2:#b21ab0;--soft:#f8e9f7;--bg:#f6f7fb;--txt:#15182a;--muted:#747887;--line:#e8e9ef}
-*{box-sizing:border-box}body{margin:0;background:#f3f4f8;font-family:Tahoma,Arial;color:var(--txt)}
-.wrap{max-width:1050px;margin:auto;padding:25px;display:grid;grid-template-columns:390px 1fr;gap:28px;justify-content:center}
-.phone{height:820px;background:#fff;border:7px solid #171821;border-radius:36px;overflow:hidden;position:relative;box-shadow:0 25px 60px #0002}
-.status{height:27px;padding:7px 16px;font-size:10px;display:flex;justify-content:space-between}
-.screen{height:calc(100% - 27px);overflow:auto;background:var(--bg);padding:14px 15px 88px}.screen::-webkit-scrollbar{width:0}
-.head{height:58px;background:white;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative}
-.logoText{font-weight:800;letter-spacing:5px;font-size:18px;color:#555}.logoMark{color:var(--p);font-size:23px}.bell{position:absolute;right:12px}
-h1{font-size:21px;margin:8px 2px 6px} .sub{font-size:11px;color:var(--muted);line-height:1.9;margin:0 2px 12px}
-.search{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;color:#9296a2;font-size:11px}
-.ai{margin-top:12px;background:linear-gradient(135deg,#451b4b,var(--p),var(--p2));color:#fff;border-radius:20px;padding:17px;box-shadow:0 12px 25px #8f008c22}
-.ai small{opacity:.8}.ai b{display:block;font-size:16px;line-height:1.8;margin:4px 0}.ai p{font-size:10px;line-height:1.8;opacity:.9}
-.btn{border:0;border-radius:12px;padding:10px 14px;font-weight:bold;background:#fff;color:var(--p)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:13px}
-.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px;min-height:112px;cursor:pointer;box-shadow:0 5px 15px #28152e0a}
-.ico{width:42px;height:42px;border-radius:13px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:9px}
-.card b{font-size:12px}.card span{display:block;font-size:9px;color:var(--muted);margin-top:5px}
-.title{display:flex;justify-content:space-between;margin:18px 2px 9px}.title b{font-size:13px}.title span{font-size:10px;color:var(--p)}
-.more{display:grid;grid-template-columns:1fr 1fr;gap:9px}.row{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:11px;cursor:pointer}
-.tip{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;font-size:10px;line-height:1.9}
-.bottom{position:absolute;bottom:0;right:0;left:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:9px 4px}
-.nav{text-align:center;font-size:9px;color:#777;cursor:pointer}.nav i{font-style:normal;display:block;font-size:18px;margin-bottom:3px}.nav.active{color:var(--p);font-weight:bold}
-.pageTitle{display:flex;gap:10px;align-items:center;margin-bottom:14px}.back{border:1px solid var(--line);background:#fff;border-radius:11px;width:36px;height:36px;color:var(--p)}.pageTitle h2{font-size:17px}
-.box{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px;font-size:11px;line-height:1.9;margin-bottom:10px}
-.primary{width:100%;border:0;border-radius:13px;padding:12px;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;font-weight:bold}
-.input{display:flex;gap:8px;margin-top:10px}.input input{flex:1;border:1px solid var(--line);border-radius:12px;padding:11px}.input button{width:44px;border:0;border-radius:12px;background:var(--p);color:#fff}
-.side{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;height:max-content;box-shadow:0 12px 35px #0000000c}.side h2{font-size:19px;margin-top:0}.side p{font-size:12px;color:var(--muted);line-height:2}.side button{display:block;width:100%;margin:7px 0;text-align:right;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;cursor:pointer}.side button:hover{background:var(--soft)}
-.hidden{display:none}
-@media(max-width:760px){.wrap{display:block;padding:0}.side{display:none}.phone{width:100%;height:100vh;border:0;border-radius:0;box-shadow:none}}
-</style></head><body><div class="wrap"><div class="phone"><div class="status"><span>9:41</span><span>● ● ●</span></div>
-
-<div id="home" class="screen">
-<div class="head"><span class="bell">🔔</span><div class="logoText">KalaRey <span class="logoMark">⌂</span></div></div>
-<h1>چطور می‌تونیم کمکت کنیم؟</h1><p class="sub">برای خرید، نگهداری و استفاده بهتر از لوازم خانگی، ابزار موردنظرت رو انتخاب کن.</p>
-<div class="search">🔎 اسم محصول، مدل، سؤال یا مشکلت رو بنویس...</div>
-<div class="ai"><small>دستیار کالاری</small><b>هر سوالی درباره لوازم خانگی داری بپرس</b><p>مدل مناسب، قیمت، مقایسه، خطاهای دستگاه و راهنمای استفاده</p><button class="btn" onclick="go('assistant')">شروع گفتگو</button></div>
-<div class="grid">
-<div class="card" onclick="go('auth')"><div class="ico">📷</div><b>اصل یا تقلبی؟</b><span>بررسی اصالت کالا</span></div>
-<div class="card" onclick="go('price')"><div class="ico">💰</div><b>قیمتش چنده؟</b><span>استعلام قیمت</span></div>
-<div class="card" onclick="go('compare')"><div class="ico">⚖️</div><b>کدوم بهتره؟</b><span>مقایسه مدل‌ها</span></div>
-<div class="card" onclick="go('advisor')"><div class="ico">🤔</div><b>چی بخرم؟</b><span>مشاور خرید</span></div>
-<div class="card" onclick="go('ar')"><div class="ico">🏠</div><b>تو خونه چطور میشه؟</b><span>مشاهده در فضای خانه</span></div>
-<div class="card" onclick="go('fix')"><div class="ico">🔧</div><b>مشکلش چیه؟</b><span>راهنمای عیب‌یابی</span></div>
+:root{
+  --brand:#8f008c;--brand2:#c01bbd;--brand3:#5f1b75;--ink:#17131d;--muted:#7b7482;
+  --bg:#f7f4f8;--card:#ffffff;--line:#ece6ef;--soft:#f8eafa;--ok:#15a36d;--warn:#f5a524;
+  --shadow:0 18px 50px rgba(57,21,68,.10);--shadow2:0 12px 28px rgba(143,0,140,.16)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+radial-gradient(circle at 20% 0%,rgba(198,55,197,.10),transparent 32%),
+linear-gradient(180deg,#fbf9fc 0,#f5f1f7 100%);font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
+button,input{font:inherit}.hidden{display:none!important}
+.shell{max-width:1180px;margin:0 auto;padding:28px;display:grid;grid-template-columns:410px 1fr;gap:34px;align-items:start}
+.phone{height:850px;background:#fff;border:8px solid #17131d;border-radius:42px;overflow:hidden;position:sticky;top:22px;box-shadow:0 35px 85px rgba(37,15,44,.22)}
+.phone:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:96px;height:24px;background:#17131d;border-radius:20px;z-index:20}
+.status{height:38px;padding:15px 18px 5px;display:flex;justify-content:space-between;font-size:10px;background:#fff;position:relative;z-index:2}
+.viewport{height:calc(100% - 38px);overflow:auto;background:linear-gradient(180deg,#fff 0,#fbf8fc 20%,#f7f4f8 100%);padding:10px 15px 96px}.viewport::-webkit-scrollbar{width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin:4px 1px 16px}
+.logo{display:flex;align-items:center;gap:8px}.logoMark{width:38px;height:38px;border-radius:13px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#fff;font-size:19px;box-shadow:var(--shadow2)}
+.logoText{font-size:20px;font-weight:900;letter-spacing:1px}.logoText span{color:var(--brand)}
+.iconBtn{width:40px;height:40px;border:1px solid var(--line);background:#fff;border-radius:14px;display:grid;place-items:center;box-shadow:0 7px 18px rgba(42,25,48,.06);cursor:pointer}
+.hero{background:linear-gradient(135deg,#2c1535 0%,#6f1d80 42%,#b510ae 100%);border-radius:26px;padding:20px;color:white;position:relative;overflow:hidden;box-shadow:0 20px 42px rgba(111,29,128,.30)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}.hero:before{width:160px;height:160px;left:-45px;top:-70px}.hero:after{width:120px;height:120px;right:-28px;bottom:-65px}
+.heroBadge{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);padding:7px 10px;border-radius:999px;font-size:10px;backdrop-filter:blur(12px)}
+.hero h1{font-size:24px;line-height:1.55;margin:12px 0 6px;position:relative}.hero p{font-size:11px;line-height:2;opacity:.88;margin:0 0 14px;position:relative}
+.heroAction{display:flex;gap:8px;position:relative}.whiteBtn,.ghostBtn{border:0;border-radius:13px;padding:11px 14px;font-weight:800;font-size:11px;cursor:pointer}.whiteBtn{background:#fff;color:var(--brand)}.ghostBtn{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.25);color:#fff}
+.search{margin-top:13px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px 14px;display:flex;align-items:center;gap:9px;color:#98909c;box-shadow:0 8px 22px rgba(53,28,59,.06);font-size:11px}
+.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:20px 2px 10px}.sectionHead b{font-size:14px}.sectionHead span{color:var(--brand);font-size:10px;font-weight:bold}
+.quickGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.tool{background:#fff;border:1px solid var(--line);border-radius:20px;padding:14px;min-height:128px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 9px 24px rgba(60,36,67,.06);transition:.22s transform,.22s box-shadow}.tool:hover{transform:translateY(-3px);box-shadow:0 15px 32px rgba(77,37,87,.11)}
+.tool:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;background:var(--soft);left:-22px;bottom:-22px}.toolIcon{width:47px;height:47px;border-radius:15px;background:linear-gradient(135deg,#f9ebfa,#f1d7f4);display:grid;place-items:center;font-size:23px;margin-bottom:12px;position:relative;z-index:1}.tool b{font-size:12px;position:relative;z-index:1}.tool span{display:block;font-size:9px;color:var(--muted);line-height:1.7;margin-top:5px;position:relative;z-index:1}
+.insight{background:linear-gradient(135deg,#fff,#fbf5fc);border:1px solid #ebd9ee;border-radius:20px;padding:15px;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center}.insightIcon{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#ffe7c0,#fff5dd);display:grid;place-items:center;font-size:23px}.insight b{font-size:11px}.insight p{font-size:9px;color:var(--muted);line-height:1.8;margin:4px 0 0}
+.storyRow{display:flex;gap:9px;overflow:auto;padding-bottom:3px}.storyRow::-webkit-scrollbar{height:0}.story{min-width:116px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:11px;box-shadow:0 7px 18px rgba(35,25,40,.05)}.story .cover{height:72px;border-radius:12px;background:linear-gradient(135deg,#f5e0f7,#ece7f8);display:grid;place-items:center;font-size:30px}.story b{display:block;font-size:9px;line-height:1.8;margin-top:8px}
+.bottom{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,255,255,.94);border:1px solid rgba(230,222,234,.9);border-radius:24px;padding:8px 5px;display:grid;grid-template-columns:repeat(5,1fr);box-shadow:0 16px 35px rgba(40,20,48,.16);backdrop-filter:blur(18px);z-index:50}.nav{text-align:center;font-size:8px;color:#8a818d;cursor:pointer;padding:4px;border-radius:14px}.nav i{display:grid;place-items:center;font-style:normal;font-size:18px;height:22px}.nav.active{color:var(--brand);font-weight:800;background:#fbf0fb}.nav.aiNav i{width:40px;height:40px;margin:-18px auto 1px;border-radius:14px;background:linear-gradient(135deg,var(--brand3),var(--brand2));color:white;box-shadow:0 8px 18px rgba(143,0,140,.30)}
+.pageHead{display:flex;align-items:center;gap:10px;margin:3px 0 14px}.back{width:39px;height:39px;border-radius:13px;border:1px solid var(--line);background:#fff;color:var(--brand);font-size:18px;cursor:pointer}.pageHead h2{margin:0;font-size:19px}.pageSub{font-size:10px;color:var(--muted);line-height:1.9;margin:-7px 0 14px 50px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:11px;box-shadow:0 8px 24px rgba(60,35,65,.05)}.panel b{font-size:12px}.panel p{font-size:10px;line-height:1.9;color:var(--muted);margin:6px 0 0}
+.upload{height:235px;border:1.5px dashed #d5b1da;border-radius:22px;background:linear-gradient(180deg,#fefbff,#fbf1fc);display:grid;place-items:center;text-align:center;padding:15px}.upload .big{font-size:48px}.upload b{display:block;font-size:12px;margin-top:8px}.upload span{display:block;font-size:9px;color:var(--muted);margin-top:5px}
+.primary{width:100%;border:0;border-radius:15px;padding:13px;background:linear-gradient(135deg,var(--brand3),var(--brand2));color:#fff;font-weight:800;box-shadow:var(--shadow2);cursor:pointer}.secondary{width:100%;border:1px solid var(--line);border-radius:15px;padding:12px;background:#fff;color:var(--ink);font-weight:700;cursor:pointer}
+.chatCard{background:linear-gradient(135deg,#faf2fb,#fff);border:1px solid #ecd9ef;border-radius:20px;padding:15px;margin-bottom:10px}.chatBubble{max-width:88%;padding:12px 13px;border-radius:16px;font-size:10px;line-height:1.9;margin:8px 0}.bot{background:#f4e5f6}.user{background:linear-gradient(135deg,var(--brand3),var(--brand2));color:#fff;margin-right:auto}.composer{display:flex;gap:8px;position:sticky;bottom:0;background:linear-gradient(transparent,#f7f4f8 26%);padding-top:22px}.composer input{flex:1;border:1px solid var(--line);background:#fff;border-radius:15px;padding:12px;outline:none}.send{width:46px;border:0;border-radius:15px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;font-size:18px}
+.compareCards{display:grid;grid-template-columns:1fr 1fr;gap:10px}.compareCard{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff;text-align:center}.compareCard .product{height:95px;border-radius:14px;background:#f7f2f8;display:grid;place-items:center;font-size:42px;margin-bottom:10px}.score{display:inline-flex;padding:5px 8px;border-radius:999px;background:#eaf8f2;color:var(--ok);font-size:9px;font-weight:bold}
+.chipRow{display:flex;gap:7px;flex-wrap:wrap}.chip{padding:7px 9px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:9px}.chip.on{background:#f6e6f7;border-color:#dcaee1;color:var(--brand);font-weight:bold}
+.side{position:sticky;top:28px;background:rgba(255,255,255,.78);border:1px solid rgba(230,222,234,.9);border-radius:30px;padding:26px;backdrop-filter:blur(18px);box-shadow:var(--shadow)}.sideBadge{display:inline-flex;gap:8px;align-items:center;background:#f7e9f8;color:var(--brand);padding:8px 11px;border-radius:999px;font-size:10px;font-weight:bold}.side h2{font-size:26px;line-height:1.45;margin:14px 0 8px}.side p{font-size:12px;line-height:2;color:var(--muted)}.metricGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:18px}.metric{background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px}.metric b{display:block;font-size:18px;color:var(--brand)}.metric span{font-size:9px;color:var(--muted)}.flow{margin-top:18px}.flowItem{display:flex;gap:10px;align-items:flex-start;margin:11px 0}.dot{width:28px;height:28px;border-radius:10px;background:#f6e7f7;color:var(--brand);display:grid;place-items:center;font-size:11px;font-weight:bold;flex:none}.flowItem b{font-size:11px}.flowItem span{display:block;color:var(--muted);font-size:9px;line-height:1.7;margin-top:3px}
+@media(max-width:800px){body{background:#fff}.shell{display:block;padding:0}.side{display:none}.phone{position:relative;top:0;width:100%;height:100dvh;border:0;border-radius:0;box-shadow:none}.phone:before{display:none}.status{display:none}.viewport{height:100%;padding-top:max(15px,env(safe-area-inset-top));padding-bottom:110px}.bottom{bottom:max(8px,env(safe-area-inset-bottom))}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="phone">
+    <div class="status"><span>9:41</span><span>● ● ●</span></div>
+    <main id="home" class="viewport screen">
+      <div class="topbar"><div class="logo"><div class="logoMark">K</div><div class="logoText">Kala<span>Rey</span></div></div><button class="iconBtn">🔔</button></div>
+      <section class="hero">
+        <div class="heroBadge">✨ هوشمندتر انتخاب کن</div>
+        <h1>لوازم خانگی،<br>ساده‌تر از همیشه</h1>
+        <p>از انتخاب و مقایسه تا قیمت، اصالت، نگهداری و عیب‌یابی؛ همه در یک دستیار.</p>
+        <div class="heroAction"><button class="whiteBtn" onclick="go('assistant')">از دستیار بپرس</button><button class="ghostBtn" onclick="go('advisor')">چی بخرم؟</button></div>
+      </section>
+      <div class="search">⌕ <span>مدل، برند، سؤال یا مشکلت رو جستجو کن...</span></div>
+      <div class="sectionHead"><b>الان چه کمکی می‌خوای؟</b><span>همه ابزارها</span></div>
+      <div class="quickGrid">
+        <div class="tool" onclick="go('auth')"><div class="toolIcon">📷</div><b>اصل یا تقلبی؟</b><span>عکس بفرست؛ اصالت و نشانه‌های مهم را بررسی کن.</span></div>
+        <div class="tool" onclick="go('price')"><div class="toolIcon">💰</div><b>قیمتش چنده؟</b><span>مدل یا لینک را بده تا قیمت و ارزش خریدش بررسی شود.</span></div>
+        <div class="tool" onclick="go('compare')"><div class="toolIcon">⚖️</div><b>کدوم بهتره؟</b><span>دو مدل را رو‌در‌رو و ساده مقایسه کن.</span></div>
+        <div class="tool" onclick="go('advisor')"><div class="toolIcon">✨</div><b>چی بخرم؟</b><span>بر اساس بودجه و نیازت پیشنهاد شخصی بگیر.</span></div>
+        <div class="tool" onclick="go('ar')"><div class="toolIcon">🏠</div><b>تو خونه چطور میشه؟</b><span>ابعاد و ظاهر محصول را در فضای خانه تصور کن.</span></div>
+        <div class="tool" onclick="go('fix')"><div class="toolIcon">🛠️</div><b>مشکلش چیه؟</b><span>خطا یا مشکل دستگاه را سریع‌تر پیدا کن.</span></div>
+      </div>
+      <div class="sectionHead"><b>پیشنهاد هوشمند امروز</b><span>برای شما</span></div>
+      <div class="insight"><div class="insightIcon">⚡</div><div><b>قبل از خرید، فقط وات دستگاه را مقایسه نکن</b><p>نوع موتور، الگوی مصرف و ظرفیت واقعی می‌توانند روی هزینه برق اثر بیشتری داشته باشند.</p></div></div>
+      <div class="sectionHead"><b>یاد بگیر</b><span onclick="go('learn')">مشاهده همه</span></div>
+      <div class="storyRow">
+        <div class="story"><div class="cover">📺</div><b>OLED یا QLED؟ کدام برای خانه شما بهتر است؟</b></div>
+        <div class="story"><div class="cover">🧺</div><b>۵ اشتباه رایج که عمر لباسشویی را کم می‌کند</b></div>
+        <div class="story"><div class="cover">🧊</div><b>ظرفیت مناسب یخچال برای خانواده چند نفره</b></div>
+      </div>
+    </main>
+    <main id="tools" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('home')">→</button><h2>ابزارها</h2></div>
+      <p class="pageSub">همه ابزارهای کاربردی KalaRey در یک‌جا</p>
+      <div class="sectionHead"><b>قبل از خرید</b></div>
+      <div class="quickGrid">
+        <div class="tool" onclick="go('auth')"><div class="toolIcon">📷</div><b>اصل یا تقلبی؟</b><span>بررسی اصالت کالا</span></div>
+        <div class="tool" onclick="go('price')"><div class="toolIcon">💰</div><b>قیمتش چنده؟</b><span>استعلام و تحلیل قیمت</span></div>
+        <div class="tool" onclick="go('compare')"><div class="toolIcon">⚖️</div><b>کدوم بهتره؟</b><span>مقایسه مدل‌ها</span></div>
+        <div class="tool" onclick="go('advisor')"><div class="toolIcon">✨</div><b>چی بخرم؟</b><span>پیشنهاد بر اساس نیاز</span></div>
+        <div class="tool" onclick="go('ar')"><div class="toolIcon">🏠</div><b>تو خونه چطور میشه؟</b><span>مشاهده در فضای خانه</span></div>
+      </div>
+      <div class="sectionHead"><b>بعد از خرید</b></div>
+      <div class="quickGrid">
+        <div class="tool" onclick="go('fix')"><div class="toolIcon">🛠️</div><b>مشکلش چیه؟</b><span>عیب‌یابی اولیه</span></div>
+        <div class="tool" onclick="go('learn')"><div class="toolIcon">📖</div><b>چطور استفاده کنم؟</b><span>راهنمای استفاده</span></div>
+        <div class="tool"><div class="toolIcon">🧹</div><b>چطور نگهداریش کنم؟</b><span>تمیزکاری و نگهداری</span></div>
+        <div class="tool"><div class="toolIcon">⚡</div><b>مصرف برقش چقدره؟</b><span>تحلیل مصرف انرژی</span></div>
+      </div>
+    </main>
+    <main id="assistant" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('home')">→</button><h2>دستیار KalaRey</h2></div>
+      <p class="pageSub">مثل یک کارشناس لوازم خانگی، همیشه کنار تو</p>
+      <div class="chatCard"><div class="chatBubble bot">سلام 👋 من دستیار KalaRey هستم. مدل، عکس، بودجه یا مشکلت رو بفرست؛ قدم‌به‌قدم کمکت می‌کنم.</div><div class="chatBubble user">برای خونه ۹۰ متری، جاروبرقی کم‌صدا چی پیشنهاد می‌دی؟</div><div class="chatBubble bot">اگر کم‌صدا بودن مهم‌ترین اولویتت باشه، اول مدل‌های زیر ۷۰ دسی‌بل رو بررسی می‌کنیم. بودجه تقریبی و برندهای موردعلاقه‌ات رو بگو تا ۳ گزینه مناسب بچینم.</div></div>
+      <div class="chipRow"><span class="chip on">📷 عکس بفرست</span><span class="chip">⚖️ مقایسه کن</span><span class="chip">💰 قیمت</span><span class="chip">🛠️ عیب‌یابی</span></div>
+      <div class="composer"><input placeholder="مثلاً این دو مدل رو مقایسه کن..."><button class="send">➤</button></div>
+    </main>
+    <main id="auth" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>اصل یا تقلبی؟</h2></div><p class="pageSub">عکس‌های درست، بررسی دقیق‌تر</p>
+      <div class="panel"><b>چه چیزهایی بفرستم؟</b><p>محصول، جعبه، برچسب سریال، بارکد و هر جزئیاتی که به تشخیص کمک می‌کند.</p></div>
+      <div class="upload"><div><div class="big">📷</div><b>عکس را اینجا اضافه کن</b><span>می‌تونی چند عکس مختلف هم بفرستی</span></div></div>
+      <button class="primary" style="margin-top:12px">شروع بررسی</button>
+    </main>
+    <main id="price" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>قیمتش چنده؟</h2></div><p class="pageSub">فقط قیمت نه؛ ارزش خرید هم مهمه</p>
+      <div class="panel"><b>نام مدل، لینک یا عکس محصول</b><p>مثلاً Samsung WW90T504DAX</p></div>
+      <div class="search">⌕ <span>مدل یا لینک محصول...</span></div>
+      <div class="panel" style="margin-top:12px"><b>تحلیل قیمت</b><p>بازه قیمت بازار، اختلاف فروشنده‌ها، روند قیمت و اینکه الان زمان مناسبی برای خرید هست یا نه.</p></div>
+      <button class="primary">بررسی قیمت</button>
+    </main>
+    <main id="compare" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>کدوم بهتره؟</h2></div><p class="pageSub">مقایسه‌ای که به تصمیم واقعی ختم شود</p>
+      <div class="compareCards"><div class="compareCard"><div class="product">🧺</div><b>Samsung WW90</b><p style="font-size:9px;color:var(--muted)">کم‌مصرف، امکانات بیشتر</p><span class="score">امتیاز 8.7</span></div><div class="compareCard"><div class="product">🧺</div><b>LG V9</b><p style="font-size:9px;color:var(--muted)">کم‌صدا، موتور قوی</p><span class="score">امتیاز 9.1</span></div></div>
+      <div class="panel" style="margin-top:11px"><b>جمع‌بندی KalaRey</b><p>اگر صدای کمتر و دوام موتور برات مهم‌تره، LG انتخاب مناسب‌تریه. اگر امکانات هوشمند و تنوع برنامه‌ها اولویتته، Samsung ارزش بیشتری داره.</p></div>
+      <button class="secondary">مدل‌ها را تغییر بده</button>
+    </main>
+    <main id="advisor" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>چی بخرم؟</h2></div><p class="pageSub">چند سؤال کوتاه، پیشنهاد شخصی‌تر</p>
+      <div class="panel"><b>دنبال چه وسیله‌ای هستی؟</b><div class="chipRow" style="margin-top:10px"><span class="chip on">یخچال</span><span class="chip">لباسشویی</span><span class="chip">تلویزیون</span><span class="chip">ظرفشویی</span></div></div>
+      <div class="panel"><b>بودجه تقریبی</b><p>از ۴۰ تا ۷۰ میلیون تومان</p></div>
+      <div class="panel"><b>چی برات مهم‌تره؟</b><div class="chipRow" style="margin-top:10px"><span class="chip on">کم‌مصرف</span><span class="chip">کم‌صدا</span><span class="chip">دوام</span><span class="chip">طراحی</span></div></div>
+      <button class="primary">۳ پیشنهاد مناسب من رو ببین</button>
+    </main>
+    <main id="ar" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>تو خونه چطور میشه؟</h2></div><p class="pageSub">قبل از خرید، اندازه و ظاهر را بهتر تصور کن</p>
+      <div style="height:385px;border-radius:24px;background:linear-gradient(180deg,#d9d4ce 0 58%,#b98e6a 58%);position:relative;overflow:hidden;box-shadow:var(--shadow)"><div style="position:absolute;left:24px;bottom:36px;width:115px;height:220px;background:linear-gradient(180deg,#fafafa,#dfe1e4);border-radius:14px;display:grid;place-items:center;font-size:54px;box-shadow:0 18px 40px #0003">🧊</div><div style="position:absolute;right:18px;top:18px;background:#fff;padding:8px 10px;border-radius:12px;font-size:9px">185 × 70 cm</div></div>
+      <button class="primary" style="margin-top:12px">باز کردن دوربین</button>
+    </main>
+    <main id="fix" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('tools')">→</button><h2>مشکلش چیه؟</h2></div><p class="pageSub">مشکل را توضیح بده؛ راهنمای اولیه و ایمن بگیر</p>
+      <div class="panel"><b>مثلاً: لباسشویی ارور E4 میده</b><p>می‌تونی کد خطا، عکس، صدا یا توضیح رفتار دستگاه رو بفرستی.</p></div>
+      <div class="panel"><b>⚠️ ایمنی اولویت دارد</b><p>برای موارد برقی، گازی یا نیازمند بازکردن دستگاه، سیستم به جای آموزش خطرناک، مراجعه به متخصص را پیشنهاد می‌دهد.</p></div>
+      <button class="primary">شروع عیب‌یابی</button>
+    </main>
+    <main id="learn" class="viewport screen hidden">
+      <div class="pageHead"><button class="back" onclick="go('home')">→</button><h2>یاد بگیر</h2></div><p class="pageSub">راهنماهای کوتاه، کاربردی و قابل فهم</p>
+      <div class="panel"><b>📺 OLED یا QLED؟</b><p>تفاوت‌ها به زبان ساده و اینکه هرکدام برای چه کسی مناسب‌تر است.</p></div>
+      <div class="panel"><b>🧺 لباسشویی چند کیلویی بخرم؟</b><p>راهنمای انتخاب ظرفیت بر اساس تعداد نفرات و نوع استفاده.</p></div>
+      <div class="panel"><b>⚡ Inverter واقعاً چقدر برق کم می‌کند؟</b><p>مزیت واقعی تکنولوژی Inverter بدون اصطلاحات پیچیده.</p></div>
+      <div class="panel"><b>🧊 بهترین دمای یخچال چند درجه است؟</b><p>تنظیم درست برای مصرف کمتر و ماندگاری بیشتر مواد غذایی.</p></div>
+    </main>
+    <main id="me" class="viewport screen hidden">
+      <div class="topbar"><div><b style="font-size:20px">من</b><div style="font-size:9px;color:var(--muted);margin-top:4px">خانه هوشمندتر، تصمیم‌های بهتر</div></div><button class="iconBtn">⚙️</button></div>
+      <div class="panel" style="background:linear-gradient(135deg,#fff,#fbf3fc)"><b>دستگاه‌های من</b><p>دستگاه‌هایی که داری را ثبت کن تا راهنما، نگهداری، ارورها و یادآوری‌ها مخصوص خودت شوند.</p><button class="secondary" style="margin-top:10px">＋ افزودن دستگاه</button></div>
+      <div class="panel"><b>🔔 هشدارهای قیمت من</b><p>۲ محصول در حال پیگیری</p></div>
+      <div class="panel"><b>♡ محصولات ذخیره‌شده</b><p>۵ محصول</p></div>
+      <div class="panel"><b>⚖️ مقایسه‌های من</b><p>۳ مقایسه اخیر</p></div>
+      <div class="panel"><b>💬 گفتگوهای قبلی</b><p>ادامه سؤال‌ها از همان‌جایی که رها کردی</p></div>
+    </main>
+    <nav class="bottom">
+      <div class="nav active" onclick="go('home')"><i>⌂</i>خانه</div>
+      <div class="nav" onclick="go('tools')"><i>◫</i>ابزارها</div>
+      <div class="nav aiNav" onclick="go('assistant')"><i>✦</i>دستیار</div>
+      <div class="nav" onclick="go('learn')"><i>▤</i>یاد بگیر</div>
+      <div class="nav" onclick="go('me')"><i>◉</i>من</div>
+    </nav>
+  </div>
+  <aside class="side">
+    <div class="sideBadge">✦ KalaRey Experience Concept</div>
+    <h2>نه یک فروشگاه دیگر؛<br>یک دستیار واقعی برای خانه.</h2>
+    <p>این نسخه، KalaRey را از یک فضای صرفاً فروشگاهی به یک تجربه خدماتی تبدیل می‌کند: کمک قبل از خرید، حین تصمیم‌گیری و حتی مدت‌ها بعد از خرید.</p>
+    <div class="metricGrid"><div class="metric"><b>Utility First</b><span>فایده قبل از فروش</span></div><div class="metric"><b>AI Ready</b><span>قابل توسعه با دستیار هوشمند</span></div><div class="metric"><b>RTL First</b><span>طراحی بومی فارسی</span></div><div class="metric"><b>Mobile First</b><span>تمرکز بر تجربه موبایل</span></div></div>
+    <div class="flow"><div class="flowItem"><div class="dot">1</div><div><b>جذب با ابزار کاربردی</b><span>قیمت، اصالت، مقایسه و مشاور خرید</span></div></div><div class="flowItem"><div class="dot">2</div><div><b>ساخت اعتماد</b><span>پیشنهاد بی‌طرفانه حتی اگر کالا در KalaRey موجود نباشد</span></div></div><div class="flowItem"><div class="dot">3</div><div><b>تبدیل طبیعی به خرید</b><span>فروش فقط جایی ظاهر می‌شود که واقعاً به تصمیم کاربر کمک کند</span></div></div><div class="flowItem"><div class="dot">4</div><div><b>بازگشت بعد از خرید</b><span>دستگاه‌های من، نگهداری، ارورها و یادآوری‌ها</span></div></div></div>
+  </aside>
 </div>
-<div class="title"><b>ابزارهای بیشتر</b></div>
-<div class="more"><div class="row" onclick="go('guide')">📖 <b>راهنما و آموزش</b></div><div class="row" onclick="go('radar')">🔔 <b>خبرم کن ارزون شد</b></div></div>
-<div class="title"><b>یک نکته کاربردی امروز</b><span onclick="go('guide')">بیشتر</span></div>
-<div class="tip"><b>🧺 لباسشویی را بیش از ظرفیت پر نکنید</b><br>این کار می‌تواند کیفیت شست‌وشو را کم کند و فشار بیشتری به قطعات دستگاه وارد کند.</div>
-</div>
-
-<div id="auth" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>اصل یا تقلبی؟</h2></div><div class="box"><b>از کالا عکس بفرست</b><br>عکس محصول، جعبه، برچسب سریال یا بارکد را واضح ارسال کن تا برای بررسی اصالت استفاده شود.</div><div class="box" style="height:250px;display:flex;align-items:center;justify-content:center;font-size:60px;border:2px dashed #d6b1d5">📷</div><button class="primary">ارسال عکس برای بررسی</button></div>
-<div id="price" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>قیمتش چنده؟</h2></div><div class="box"><b>اسم، عکس یا لینک محصول رو بفرست</b><br>قیمت و اطلاعات موجود درباره مدل موردنظر بررسی می‌شود.</div><div class="input"><input placeholder="مثلاً Samsung WW90T504DAX"><button>➤</button></div></div>
-<div id="compare" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>کدوم بهتره؟</h2></div><div class="box">دو مدل رو انتخاب کن تا تفاوت‌ها، مزایا، معایب و مناسب‌بودن هرکدوم برای نیازت رو ساده مقایسه کنیم.</div><div class="grid"><div class="card"><div class="ico">＋</div><b>محصول اول</b></div><div class="card"><div class="ico">＋</div><b>محصول دوم</b></div></div><button class="primary" style="margin-top:12px">مقایسه کن</button></div>
-<div id="advisor" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>چی بخرم؟</h2></div><div class="box"><b>چند سؤال کوتاه جواب بده</b><br>بر اساس بودجه، فضای خانه و نیازت گزینه مناسب پیشنهاد می‌کنیم؛ حتی اگر محصول در کالاری موجود نباشد.</div><div class="row">چه وسیله‌ای می‌خوای؟</div><div class="row">حدود بودجه‌ات چقدره؟</div><div class="row">چه ویژگی‌ای برات مهم‌تره؟</div><button class="primary" style="margin-top:10px">پیشنهاد بده</button></div>
-<div id="ar" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>تو خونه چطور میشه؟</h2></div><div class="box" style="height:390px;background:linear-gradient(#eee 0 58%,#d4bea5 58%);display:flex;align-items:center;justify-content:center;font-size:80px">🧊</div><button class="primary">مشاهده با دوربین</button></div>
-<div id="fix" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>مشکلش چیه؟</h2></div><div class="box"><b>مشکل دستگاه رو توضیح بده</b><br>ارور، عکس یا توضیح مشکل را بفرست تا راهنمای اولیه و ایمن دریافت کنی.</div><div class="input"><input placeholder="مثلاً لباسشویی ارور E4 میده..."><button>➤</button></div><div class="box" style="margin-top:12px"><b>⚠️ ایمنی</b><br>برای مشکلات برقی، گازی یا موارد نیازمند بازکردن دستگاه، مراجعه به متخصص پیشنهاد می‌شود.</div></div>
-<div id="assistant" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>دستیار کالاری</h2></div><div class="box">سلام 👋 هر سؤالی درباره انتخاب، مقایسه، قیمت، استفاده یا مشکل لوازم خانگی داری بپرس.</div><div class="input"><input placeholder="سؤالت رو بنویس..."><button>➤</button></div></div>
-<div id="guide" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>راهنما و آموزش</h2></div><div class="box"><b>راهنمای خرید یخچال</b><br>چه ظرفیتی برای خانواده شما مناسب است؟</div><div class="box"><b>OLED یا QLED؟</b><br>تفاوت‌ها به زبان ساده</div><div class="box"><b>افزایش عمر لباسشویی</b><br>۵ نکته کاربردی نگهداری</div></div>
-<div id="radar" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>خبرم کن ارزون شد</h2></div><div class="ai"><b>قیمت موردنظرت رو دنبال کن</b><p>مدل و قیمت هدفت رو ثبت کن تا وقتی قیمت مناسب شد بهت خبر بدیم.</p></div><div class="input"><input placeholder="نام یا مدل محصول"><button>＋</button></div><div class="input"><input placeholder="قیمت هدف"><button>✓</button></div></div>
-<div id="contact" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>ارتباط با کالاری</h2></div><div class="box">☎ تماس تلفنی</div><div class="box">💬 چت با کالاری</div><div class="box">🟢 واتساپ</div><div class="box">📍 آدرس فروشگاه</div></div>
-<div id="account" class="screen hidden"><div class="pageTitle"><button class="back" onclick="go('home')">→</button><h2>حساب من</h2></div><div class="box">🔔 هشدارهای قیمت من</div><div class="box">🕘 بررسی‌های قبلی</div><div class="box">♡ موارد ذخیره‌شده</div><div class="box" onclick="go('contact')">🎧 ارتباط با کالاری</div></div>
-
-<div class="bottom"><div class="nav active" onclick="go('home')"><i>⌂</i>خانه</div><div class="nav" onclick="go('advisor')"><i>◇</i>ابزارها</div><div class="nav" onclick="go('assistant')"><i>◉</i>دستیار</div><div class="nav" onclick="go('guide')"><i>▤</i>محتوا</div><div class="nav" onclick="go('account')"><i>♙</i>حساب من</div></div>
-</div>
-<div class="side"><h2>نسخه کاربردمحور کالاری</h2><p>در این نمونه فروش محصول از مرکز تجربه خارج شده و اپ بیشتر نقش «دستیار لوازم خانگی» دارد. فروش و ارتباط با کالاری در مرحله بعدی و به‌صورت طبیعی در دسترس کاربر است.</p>
-<button onclick="go('home')">صفحه اصلی</button><button onclick="go('auth')">اصل یا تقلبی؟</button><button onclick="go('price')">قیمتش چنده؟</button><button onclick="go('compare')">کدوم بهتره؟</button><button onclick="go('advisor')">چی بخرم؟</button><button onclick="go('ar')">تو خونه چطور میشه؟</button><button onclick="go('fix')">مشکلش چیه؟</button><button onclick="go('radar')">خبرم کن ارزون شد</button><button onclick="go('guide')">راهنما و آموزش</button><button onclick="go('contact')">ارتباط با کالاری</button></div>
-</div><script>
-function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));let m={home:0,advisor:1,auth:1,price:1,compare:1,ar:1,fix:1,radar:1,assistant:2,guide:3,account:4};if(m[id]!=null)document.querySelectorAll('.nav')[m[id]].classList.add('active')}
-</script></body></html>
+<script>
+function go(id){
+  document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));
+  const page=document.getElementById(id); if(page){page.classList.remove('hidden');page.scrollTop=0}
+  document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
+  const map={home:0,tools:1,auth:1,price:1,compare:1,advisor:1,ar:1,fix:1,assistant:2,learn:3,me:4};
+  if(map[id]!=null)document.querySelectorAll('.nav')[map[id]].classList.add('active');
+}
+</script>
+</body>
+</html>
